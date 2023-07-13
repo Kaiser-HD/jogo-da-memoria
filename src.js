@@ -1,3 +1,16 @@
+function receberNumero() {
+    let passa = false
+    let numero = 0
+    while (passa === false) {
+        numero = prompt("Digite um número: ");
+        passa = verification(numero)
+    }
+
+  
+   
+    return parseInt(numero);
+}
+
 const imagens = [
     './assets/muzan.jpg',
     './assets/nggyu.gif',
@@ -52,8 +65,21 @@ function selectCards(qtd) {
     function comparador() { 
         return Math.random() - 0.5; 
     }
-
-    creatCard(qtd)
 }
 
-selectCards(10)
+function verification(numero) {
+    if (numero >= 4 && numero <= 18 && numero % 2 === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function onload() {
+    const numeroDigitado = receberNumero();
+    
+    selectCards(numeroDigitado)
+    creatCard(numeroDigitado)
+}
+
+onload()
