@@ -52,6 +52,7 @@ function creatCard(qtd) {
 function flip(element) {
     element.classList.toggle('flip');
     valitadeCard()
+    finish()
 }
 
 function selectCards(qtd) {
@@ -93,6 +94,17 @@ function valitadeCard() {
             }, 800)
             
         }
+    }
+}
+
+function finish() {
+    const qtdCards = dubble.length
+    const qtdCardsv = document.querySelectorAll('.flipped').length
+    if (qtdCards === qtdCardsv) {
+        setTimeout(() => {
+            alert('Parabéns!')
+            location.reload(); 
+        }, 800)
     }
 }
 
