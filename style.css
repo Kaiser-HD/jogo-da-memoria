@@ -71,3 +71,7 @@ body {
 .flip {
     transform: rotateY(180deg);
 }
+
+.flipped {
+    transform: rotateY(180deg);
+}

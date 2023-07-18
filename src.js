@@ -2,8 +2,8 @@ function receberNumero() {
     let passa = false
     let numero = 0
     while (passa === false) {
-        numero = prompt("Digite um número: ");
-        passa = verification(numero)
+        numero = prompt("Digite um Número (Par entre 4 e 18): ");
+        passa = validNumber(numero)
     }
 
   
@@ -40,7 +40,7 @@ function creatCard(qtd) {
         mesa.innerHTML += `
         <div class="cartao" onclick=flip(this)>
             <div class="frente">
-                <img src=${dubble[i]} alt="personagem douma">
+                <img src=${dubble[i]} alt="personagem de demon slayer">
             </div>
             <div class="verso">
                 <img src="./assets/icon.png" alt="icon Demon Slayer">
@@ -51,6 +51,7 @@ function creatCard(qtd) {
 
 function flip(element) {
     element.classList.toggle('flip');
+    valitadeCard()
 }
 
 function selectCards(qtd) {
@@ -67,11 +68,31 @@ function selectCards(qtd) {
     }
 }
 
-function verification(numero) {
+function validNumber(numero) {
     if (numero >= 4 && numero <= 18 && numero % 2 === 0) {
         return true;
     } else {
         return false;
+    }
+}
+
+function valitadeCard() {
+    const flipped = document.querySelectorAll('.flip')
+    if (flipped.length === 2) {
+        const cardOne = flipped[0].querySelector('img').currentSrc
+        const cardTwo = flipped[1].querySelector('img').currentSrc
+        if (cardOne === cardTwo) {
+            flipped[0].classList.toggle('flip')
+            flipped[1].classList.toggle('flip')
+            flipped[0].classList.toggle('flipped')
+            flipped[1].classList.toggle('flipped')
+        } else {
+            setTimeout(() => {
+                flipped[0].classList.toggle('flip')
+                flipped[1].classList.toggle('flip')
+            }, 800)
+            
+        }
     }
 }
 
